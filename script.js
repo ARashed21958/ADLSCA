@@ -82,9 +82,9 @@ const TIMELINE = [
     version: "v1.1",
     title: "NN2 Handshake",
     tag: "Report",
-    summary: "[Placeholder: a short summary in your own words.]",
-    numbers: [],
-    pdf: null,
+    summary: "v1.1 changed the test to filling in missing numbers in a sequence. Instead of restoring one snapshot, it scored every memory by relevance and blended the top three. It helped, but only on 8 seeds.",
+    numbers: ["Relevance blend: 0.92 overall, 0.79 after a return (8 seeds)"],
+    pdf: "reports/ADLSCA_v1.1_Reports.pdf",
   },
   {
     version: "v1.0",

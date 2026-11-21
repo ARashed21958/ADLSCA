@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ADLSCA · Ahmed H. Rashed</title>
+  <meta name="description" content="ADLSCA: a keyed memory bank for neural networks that learn from a changing data stream. Research project by Ahmed H. Rashed.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a href="#top" class="brand">ADLSCA</a>
+    <nav aria-label="Sections">
+      <a href="#story">Story</a>
+      <a href="#report">Report</a>
+      <a href="#timeline">Timeline</a>
+      <a href="#code">Code</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- 1. HOME / STORY -->
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Independent research project</p>
+      <h1>ADLSCA: teaching a neural network to remember what it has already learned</h1>
+      <p class="byline">Ahmed H. Rashed</p>
+    </div>
+  </section>
+
+  <section id="story" class="section">
+    <div class="wrap narrow">
+      <h2>Why I started</h2>
+      <p>I started this project after watching a TikTok about how the human brain learns skills, and how neurons connect to form groups of skills. I wondered: why can't AI do the same? Why can't it remember skills by how common they are, and let useless or false skills fade, the way people forget?</p>
+
+      <h2>What I found</h2>
+      <p>I expected it to work right away and to be very human-like. It wasn't that simple. Computers don't learn the way brains do; they are matrices that get multiplied over and over. So I researched encoders and how tokens are made, and an encoder looked like a simpler version of what I had imagined. That made me wonder whether an encoder could become the core of the system.</p>
+      <p>The version that works best, v4.9.3, is a plain memory bank. On my one MNIST test it cut error to 0.638 of a plain network's, so it "works" on that test, and only that test. What surprised me most is also what disappointed me most: my own equations did not earn their place, and the simple design beat them. In my tests, the simplest design worked best.</p>
+
+      <h2>What comes next</h2>
+      <p>The next stage, version 5, is meant to use a learned encoder to build the memory keys, and later to connect the memory to a language model. That is planned and has not been tested. So far, package v5.0 only rebuilds the same memory bank as a single PyTorch module.</p>
+
+      <div class="facts">
+        <p><strong>Please read this first.</strong></p>
+        <ul>
+          <li>All results on this site come from <strong>one MNIST test</strong>: a stream of handwritten digits that switches between groups of digits. They show the system works on this test, not in general.</li>
+          <li>Connecting the memory to a language model is <strong>planned and untested</strong>.</li>
+          <li>I do <strong>not claim a new invention</strong>. The design is close to existing work. What I claim is that I designed, built and tested this system, and I report what I found, including what failed.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. FEATURED REPORT -->
+  <section id="report" class="section alt">
+    <div class="wrap">
+      <p class="eyebrow">Featured report</p>
+      <h2 class="big">ADLSCA v4.9.3 Report</h2>
+      <p class="lead">v4.9.3 is the final memory design: a keyed memory bank. On 16 fresh held-out seeds (8000-8015), scored once with nothing changed afterwards, it cut overall error to <strong>0.638</strong> times a plain network without memory, and it beat that baseline on all 16 seeds.</p>
+
+      <div class="stats">
+        <div class="stat"><span class="num">0.638</span><span class="lbl">Overall error ratio<br>(lower is better)</span></div>
+        <div class="stat"><span class="num">16 / 16</span><span class="lbl">Held-out seeds where it beat the baseline</span></div>
+        <div class="stat"><span class="num">0.924</span><span class="lbl">On the brand-new<br>group D</span></div>
+      </div>
+
+      <div class="card chart-card">
+        <h3>Held-out results (seeds 8000-8015)</h3>
+        <p class="muted small">Error as a ratio to a plain network with no memory. Lower is better; the dashed line at 1.0 is the baseline. Hover over or tap a bar to see its exact value.</p>
+        <div class="legend" id="legend"></div>
+        <div class="chart" id="chart" role="img" aria-label="Bar chart of held-out error ratios for Oracle, v4.6 snapshots, v4.9.2 adapter and the final bank across five metrics."></div>
+        <div class="tooltip" id="tooltip" hidden></div>
+        <details class="table-toggle">
+          <summary>Show the numbers as a table</summary>
+          <div class="table-scroll">
+            <table>
+              <thead><tr><th>Metric</th><th>Oracle</th><th>v4.6 snapshots</th><th>v4.9.2 adapter</th><th>Final bank (v4.9.3)</th></tr></thead>
+              <tbody id="heldout-table"></tbody>
+            </table>
+          </div>
+        </details>
+        <p class="small muted">The oracle is told the true digit group, so it is a reference point, not a fair competitor. Right after a group returns, the oracle and v4.6 snapshots are still better than the final bank. On first visits to a group, the bank is level with the baseline.</p>
+      </div>
+
+      <div class="card pdf-card">
+        <div class="pdf-actions">
+          <a class="btn primary" href="reports/ADLSCA_v4.9.3_Report.pdf" download>Download PDF</a>
+          <a class="btn" href="reports/ADLSCA_v4.9.3_Report.pdf" target="_blank" rel="noopener">Open in a new tab</a>
+        </div>
+        <p class="small muted mobile-note">On some phones the PDF can't be shown inside the page. If you see a blank box, use <a href="reports/ADLSCA_v4.9.3_Report.pdf" target="_blank" rel="noopener">Open in a new tab</a>.</p>
+        <object class="pdf-frame" data="reports/ADLSCA_v4.9.3_Report.pdf#view=FitH" type="application/pdf" aria-label="ADLSCA v4.9.3 Report PDF">
+          <p class="pdf-fallback">Your browser can't show the PDF here. <a href="reports/ADLSCA_v4.9.3_Report.pdf" download>Download the v4.9.3 report</a> instead.</p>
+        </object>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. TIMELINE -->
+  <section id="timeline" class="section">
+    <div class="wrap narrow">
+      <p class="eyebrow">How it got here</p>
+      <h2 class="big">Timeline of my reports</h2>
+      <p class="muted">Click a version to open it. Newest first.</p>
+      <ol class="timeline" id="timeline-list"></ol>
+    </div>
+  </section>
+
+  <!-- 4. CODE -->
+  <section id="code" class="section alt">
+    <div class="wrap narrow">
+      <p class="eyebrow">Code</p>
+      <h2 class="big">The code</h2>
+      <div class="ai-note">
+        <p><strong>A note on how the code was written.</strong> An AI assistant helped write the code for this project. I designed the experiments, chose what to test, ran every experiment myself, and decided which versions to keep and which to drop.</p>
+      </div>
+      <p>The final system is <code>adapter --bank 1</code> in package v4.9.3. The held-out test was run with <code>run_final_heldout.bat</code>, and its commands were frozen in <code>configs/final_heldout_v493.json</code> before any result was seen.</p>
+      <p>Package v5.0 rebuilds the same bank as one PyTorch module and reproduces the v4.9.3 results exactly.</p>
+      <div class="pdf-actions">
+        <!-- REPLACE the href with your code repository link when it is public. -->
+        <a class="btn primary disabled" href="#" aria-disabled="true" id="code-link">Code repository (coming soon)</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <p>© 2026 Ahmed H. Rashed · ADLSCA research project</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -90,9 +90,9 @@ const TIMELINE = [
     version: "v1.0",
     title: "The first memory system",
     tag: "Start",
-    summary: "[Placeholder: a short summary in your own words.] Where ADLSCA started: a surprise-driven memory framework built on my own equations.",
-    numbers: [],
-    pdf: null,
+    summary: "Version 1.0 was my system built fully on my own math. It compared the network's prediction with the true answer, and used that gap as a surprise signal to decide when to save a memory. When an old situation came back, it restored the matching memory. It worked on four tiny curve tasks across ten seeds, even though the test was very small.",
+    numbers: ["All tasks improved in all four task orders, across 10 seeds"],
+    pdf: "reports/ADLSCA_v1.0_Report.pdf",
   },
 ];
 

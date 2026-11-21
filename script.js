@@ -74,9 +74,9 @@ const TIMELINE = [
     version: "v2.2",
     title: "Technical report",
     tag: "Report",
-    summary: "[Placeholder: a short summary in your own words.]",
-    numbers: [],
-    pdf: null,
+    summary: "I expected v2.2 to work like v1.1, only bigger, on real MNIST digits. Restore helped, but the blend lost overall, and my equations were too sensitive to pick when to save a memory. A plain schedule beat them.",
+    numbers: ["Restore: 0.93 overall","0.73 after a return (16 held-out seeds)"],
+    pdf: "reports/ADLSCA_v2.2_Report.pdf",
   },
   {
     version: "v1.1",
